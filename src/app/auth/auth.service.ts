@@ -5,8 +5,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { map, tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
-import Amplify, { Auth } from 'aws-amplify';
-import { environment } from './../../environments/environment';
+import { Auth } from 'aws-amplify';
+
 
 @Injectable()
 export class AuthService {
@@ -16,7 +16,6 @@ export class AuthService {
   constructor(
     private router: Router
   ) {
-    Amplify.configure(environment.amplify);
     this.loggedIn = new BehaviorSubject<boolean>(false);
   }
 
@@ -44,9 +43,11 @@ export class AuthService {
       .pipe(
         map(result => {
           this.loggedIn.next(true);
+          // console.log(result);
           return true;
         }),
         catchError(error => {
+          // console.log('ERROR \n', error)
           this.loggedIn.next(false);
           return of(false);
         })

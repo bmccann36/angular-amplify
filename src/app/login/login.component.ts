@@ -29,14 +29,17 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitLogin(value: any) {
-    const email = value.email, password = value.password;
-    this.auth.signIn(email, password)
-      .subscribe(
-        result => {
-          this.router.navigate(['/']);
-        },
-        error => {
-          console.log(error);
-        });
+    const config = {
+      domain: 'xxx',
+      scope: ['xxx'],
+      redirectSignIn: 'xxxx',
+      redirectSignOut: 'xxx',
+      responseType: 'xxxx',
+      userPoolWebClientId: 'xxxx'
+    };
+    const { xxx } = config;
+    const clientId = config.userPoolWebClientId;
+// PLACEHOLDER FOR SENSITIVE
+
   }
 }

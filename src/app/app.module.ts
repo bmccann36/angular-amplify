@@ -8,6 +8,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 
 @NgModule({
   declarations: [
@@ -21,10 +22,12 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    AmplifyAngularModule,
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    AmplifyService
   ],
   bootstrap: [AppComponent]
 })

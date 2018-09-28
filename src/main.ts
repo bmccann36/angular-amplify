@@ -1,8 +1,14 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app/app.module';
+
+import Amplify from 'aws-amplify';
 import { environment } from './environments/environment';
+
+Amplify.configure(environment.amplify);
+
+import { AppModule } from './app/app.module';
+
 
 if (environment.production) {
   enableProdMode();
